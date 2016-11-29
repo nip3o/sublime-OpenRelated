@@ -21,7 +21,8 @@ class OpenRelatedCommand(sublime_plugin.WindowCommand):
         sublime.status_message("Cannot find related file !")
 
     def is_enabled(self):
-        return self.window.active_view() != None
+        view = self.window.active_view()
+        return bool(view and view.file_name())
 
     def description(self):
         return "Open related file."
