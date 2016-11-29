@@ -9,7 +9,10 @@ class OpenRelatedCommand(sublime_plugin.WindowCommand):
         current_file = view.file_name()
         found = False
 
-        for patterns in view.settings().get('open_related_patterns', []):
+        settings = view.settings()
+        plugin_settings = settings.get('open_related', {})
+
+        for patterns in plugin_settings.get('patterns', []):
             for file in converter.create(patterns, sublime.platform()).convert(current_file):
                 if os.path.exists(file):
                     if win.num_groups() > 1:

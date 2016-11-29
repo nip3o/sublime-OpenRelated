@@ -7,8 +7,10 @@
     ],
     "settings":
     {
-        "open_related_patterns": [
-          ["*/css/*.css", "*/js/*.js", "*/test/unit/*.coffee"]
-        ]
+        "open_related": {
+            "patterns": [
+                ["*/css/*.css", "*/js/*.js", "*/test/unit/*.coffee"]
+            ]
+        }
     }
 }

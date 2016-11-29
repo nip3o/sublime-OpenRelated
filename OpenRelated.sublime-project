@@ -16,13 +16,11 @@
     ],
     "settings":
     {
-        "open_related_patterns":
-        [
-            [
-                "*_test.py",
-                "*.py"
-            ]
-        ],
+        "open_related": {
+            "patterns": [
+                ["*_test.py", "*.py"]
+            ],
+        },
         "tab_size": 4
     }
 }
