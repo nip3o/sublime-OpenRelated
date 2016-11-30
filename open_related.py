@@ -1,5 +1,5 @@
 import sublime, sublime_plugin
-import os.path
+import os
 from . import converter
 
 
@@ -31,7 +31,14 @@ class OpenRelatedCommand(sublime_plugin.WindowCommand):
                 return
 
         if non_existing_files and plugin_settings.get('create_new_if_not_exist', False):
-            _open_file(self.window, non_existing_files[0])
+            file_path = non_existing_files[0]
+            directory, filename = os.path.split(file_path)
+            try:
+                os.makedirs(directory)
+            except OSError:
+                if not os.path.isdir(directory):
+                    raise
+            _open_file(self.window, file_path)
 
         sublime.status_message("Cannot find related file!")
 
